@@ -1,0 +1,77 @@
+void itc_num_print(int num1){               //простой вывод числа
+    cin>>num1;
+    cout<<num1;
+}
+int itc_len_num (long long num1){           //количество цифр
+    int len=0;
+    cin>>num1;
+    while (num1!=0){
+        num1/=10;
+        len++;
+    }return len;
+}
+int itc_sum_num(long long num1){            //сумма цифр
+    cin>>num1;
+    int sum=0;
+    if (num1<0)
+        num1*=(-1);
+    while (num1!=0){
+        sum=sum+num1%10;
+        num1=num1/10;
+    }
+    return sum;
+}
+long long itc_multi_num(long long num1){    //произведение цифр
+    cin>>num1;
+    int proizv=1;
+    if (num1<0)
+        num1*=(-1);
+    while (num1!=0){
+        proizv=proizv*(num1%10);
+        num1=num1/10;
+    }
+    return proizv;
+}
+int itc_max_num(long long num1){            //максимальная цифра
+    cin>>num1;
+    int maxim=0;
+    if (num1<0)
+        num1*=(-1);
+    while (num1!=0){
+        if (num1%10>maxim)
+            maxim=num1%10;
+        num1/=10;
+    }
+    return maxim;
+}
+int itc_min_num(long long num1){            //минимальная цифра
+    cin>>num1;
+    int mini=10;
+    if (num1<0)
+        num1*=(-1);
+    while (num1!=0){
+        if (num1%10<mini)
+            mini=num1%10;
+        num1/=10;
+    }
+    return mini;
+}
+int itc_rev_num(long long num1){            //число наоборот
+    cin>>num1;
+    int chis=0;
+    while (num1!=0){
+        chis=chis*10+num1%10;
+        num1/=10;
+    }
+    return chis;
+}
+int itc_null_count(long long num1){         //количество нулей
+    cin>>num1;
+    int chis=0;
+    while (num1!=0){
+        if (num1%10==0)
+            chis++;
+        num1/=10;
+    }
+    return chis;
+}
