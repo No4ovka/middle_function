@@ -1,3 +1,4 @@
+#include "middle.h"
 void itc_num_print(int num1){               //простой вывод числа
     cin>>num1;
     cout<<num1;
@@ -75,3 +76,134 @@ int itc_null_count(long long num1){         //количество нулей
     }
     return chis;
 }
+bool itc_mirror_num(long long num1){        //
+    if(num1==itc_rev_num(num1))
+        return true;
+    return false;
+}
+int itc_mirror_count(long long num1){
+    int kolich=0,chis=1;
+    if (num1<0)
+        num1*=(-1);
+    while (chis<num1){
+        if (chis==itc_rev_num(chis))
+            kolich++;
+        chis++;
+    }
+    return kolich;
+}
+int itc_second_max_num(long long num1){
+    int max2=-1,maxim=0,num=num1;
+    if (num1<0)
+        num1*=(-1);
+    while (num!=0){
+        if (num1%10>maxim)
+            maxim=num1%10;
+        num/=10;
+    }
+    while (num1!=0){
+        if (num1%10<=maxim && num1%10>max2)
+            max2=num1%10;
+        num1/=10;
+    }
+    return max2;
+}
+int itc_second_simple_max_num(long long num1){
+    int max2=-1,maxim=0,num=num1;
+    if (num1<0)
+        num1*=(-1);
+    while (num!=0){
+        if (num1%10>maxim)
+            maxim=num1%10;
+        num/=10;
+    }
+    while (num1!=0){
+        if (num1%10==max2)
+            return -1;
+        else if (num1%10<maxim && num1%10>max2)
+            max2=num1%10;
+        num1/=10;
+    }
+    return max2;
+}
+long long itc_bin_num(long long num1){
+    int obr=1;
+    while (num1!=0){
+        obr=(obr+(num1%2))*10;
+        num1=num1/2;
+    }
+    num1=0;
+    while (obr!=0){
+        num1=num1*10+obr%10;
+        obr=obr/10;
+    }num1=num1-1;
+    return num1;
+}
+long long itc_oct_num(long long num1){
+    int obr=1;
+    while (num1!=0){
+        obr=(obr+(num1%8))*10;
+        num1=num1/8;
+    }
+    num1=0;
+    while (obr!=0){
+        num1=num1*10+obr%10;
+        obr=obr/10;
+    }num1-=1;
+    return num1;
+}
+int itc_rev_bin_num(long long num1){
+    int stepen=0,chis=0;
+    while (num1!=0){
+        if (num1%10==1)
+            chis+=itc_pow(2,stepen);
+        num1/=10;
+        stepen++;
+    }
+    return chis;
+}
+int itc_rev_oct_num(long long num1){
+    int stepen=0,chis=0;
+    while (num1!=0){
+        chis+=itc_pow(8,stepen)*(num1%10);
+        num1/=10;
+        stepen++;
+    }
+    return chis;
+}
+int itc_rev_covert_num(long long num1, int ss){
+    int stepen=0,chis=0;
+    while (num1!=0){
+        if (num1%10==1)
+            chis+=itc_pow(ss,stepen);
+        num1/=10;
+        stepen++;
+    }
+    return chis;
+}
+
+
+int itc_abs(int num1)
+{int aa=0;
+    if (num1>=0)
+    {aa=num1;
+        return aa;//num1;
+    }
+    else
+    {aa=num1*(-1);
+        return aa;//num1*-1;
+    }
+}double itc_pow(int n, int i)
+{double m=1,p=itc_abs(i);
+int a=n;
+    if (i!=0){
+        for (int k=1; k<p; k++)
+            n= n*a;
+    }else
+        if(i==0)
+            return 1;
+        //else {a=1/(n^(-i));}
+    if (i<0)
+        return m/n;
+    else
+        return n;}
