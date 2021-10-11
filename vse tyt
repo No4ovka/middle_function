@@ -76,12 +76,12 @@ int itc_null_count(long long num1){         //количество нулей
     }
     return chis;
 }
-bool itc_mirror_num(long long num1){        //
+bool itc_mirror_num(long long num1){        //является палиндромом
     if(num1==itc_rev_num(num1))
         return true;
     return false;
 }
-int itc_mirror_count(long long num1){
+int itc_mirror_count(long long num1){       //количество палиндромов
     int kolich=0,chis=1;
     if (num1<0)
         num1*=(-1);
@@ -92,7 +92,7 @@ int itc_mirror_count(long long num1){
     }
     return kolich;
 }
-int itc_second_max_num(long long num1){
+int itc_second_max_num(long long num1){     //второе максимально число
     int max2=-1,maxim=0,num=num1;
     if (num1<0)
         num1*=(-1);
@@ -108,7 +108,7 @@ int itc_second_max_num(long long num1){
     }
     return max2;
 }
-int itc_second_simple_max_num(long long num1){
+int itc_second_simple_max_num(long long num1){      //вторая максимальная или -1
     int max2=-1,maxim=0,num=num1;
     if (num1<0)
         num1*=(-1);
@@ -126,7 +126,7 @@ int itc_second_simple_max_num(long long num1){
     }
     return max2;
 }
-long long itc_bin_num(long long num1){
+long long itc_bin_num(long long num1){      //перевод в двоичку
     int obr=1;
     while (num1!=0){
         obr=(obr+(num1%2))*10;
@@ -139,7 +139,7 @@ long long itc_bin_num(long long num1){
     }num1=num1-1;
     return num1;
 }
-long long itc_oct_num(long long num1){
+long long itc_oct_num(long long num1){      //перевод в восьмеричку
     int obr=1;
     while (num1!=0){
         obr=(obr+(num1%8))*10;
@@ -152,7 +152,7 @@ long long itc_oct_num(long long num1){
     }num1-=1;
     return num1;
 }
-int itc_rev_bin_num(long long num1){
+int itc_rev_bin_num(long long num1){        //перевод из двоички
     int stepen=0,chis=0;
     while (num1!=0){
         if (num1%10==1)
@@ -162,7 +162,7 @@ int itc_rev_bin_num(long long num1){
     }
     return chis;
 }
-int itc_rev_oct_num(long long num1){
+int itc_rev_oct_num(long long num1){        //перевод ид восьмерички
     int stepen=0,chis=0;
     while (num1!=0){
         chis+=itc_pow(8,stepen)*(num1%10);
@@ -171,7 +171,20 @@ int itc_rev_oct_num(long long num1){
     }
     return chis;
 }
-int itc_rev_covert_num(long long num1, int ss){
+int itc_covert_num(long long num1, int ss){     //перевод из десятички в любую
+    int obr=1;
+    while (num1!=0){
+        obr=(obr+(num1%ss))*10;
+        num1=num1/ss;
+    }
+    num1=0;
+    while (obr!=0){
+        num1=num1*10+obr%10;
+        obr=obr/10;
+    }num1=num1-1;
+    return num1;
+}
+int itc_rev_covert_num(long long num1, int ss){     //перевод из любой в десятичку
     int stepen=0,chis=0;
     while (num1!=0){
         if (num1%10==1)
@@ -183,7 +196,7 @@ int itc_rev_covert_num(long long num1, int ss){
 }
 
 
-int itc_abs(int num1)
+int itc_abs(int num1)       //модуль
 {int aa=0;
     if (num1>=0)
     {aa=num1;
@@ -193,7 +206,7 @@ int itc_abs(int num1)
     {aa=num1*(-1);
         return aa;//num1*-1;
     }
-}double itc_pow(int n, int i)
+}double itc_pow(int n, int i)       /степень
 {double m=1,p=itc_abs(i);
 int a=n;
     if (i!=0){
